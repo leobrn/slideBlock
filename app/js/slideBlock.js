@@ -3,8 +3,7 @@
     const slideBlock = function (options) {
 
         const settings = {
-            position: 'none',
-            elementID: 'none',
+            elementID: '',
             overlay: false,
             startMove: false,
             delayStart: 500,
@@ -12,8 +11,31 @@
             elementsDisableID: []
         },
             slideBlockOverlayHTML = `<div class="slide-block slide-block--overlay" id="slideBlockOverlay""></div>`,
+            activateBlock = function () {
+                if (element) {
+                    element.classList.add('slide-block--active')
+                    if (settings.overlay) {
+                        element.insertAdjacentHTML("afterEnd", slideBlockOverlayHTML)
+                        doc.body.classList.add('slide-block--overflow')
+                        const slideBlockOverlay = document.getElementById('slideBlockOverlay')
+                        slideBlockOverlay.addEventListener('click', () => {
+                            disableBlock()
+                        })
+                    }
+                }
+            },
+            disableBlock = function () {
+                if (element) {
+                    element.classList.remove('slide-block--active')
+                    if (settings.overlay) {
+                        const slideBlockOverlay = document.getElementById('slideBlockOverlay')
+                        slideBlockOverlay.parentNode.removeChild(slideBlockOverlay)
+                        doc.body.classList.remove('slide-block--overflow')
+                    }
+                }
+            },
             elementAddEventListener = function (array, disable = false) {
-                if (array.length > 0) {
+                if (Array.isArray(array)) {
                     array.forEach(item => {
                         const elementEvent = document.getElementById(item)
                         if (elementEvent) {
@@ -27,46 +49,23 @@
                         }
                     })
                 }
+            },
+            startMove = function () {
+                element.classList.add('slide-block--active')
             }
 
         Object.assign(settings, options)
         const element = document.getElementById(settings.elementID)
+
         elementAddEventListener(settings.elementsActivateID)
         elementAddEventListener(settings.elementsDisableID, true)
-
-        const activateBlock = function activate() {
-            if (element) {
-                element.classList.add('slide-block--active')
-                if (settings.overlay) {
-                    element.insertAdjacentHTML("afterEnd", slideBlockOverlayHTML)
-                    doc.body.classList.add('slide-block--overflow')
-                    const slideBlockOverlay = document.getElementById('slideBlockOverlay')
-                    slideBlockOverlay.addEventListener('click', () => {
-                        disableBlock()
-                    })
-                }
-            }
-        }
-        const disableBlock = function () {
-            if (element) {
-                element.classList.remove('slide-block--active')
-                if (settings.overlay) {
-                    const slideBlockOverlay = document.getElementById('slideBlockOverlay')
-                    slideBlockOverlay.parentNode.removeChild(slideBlockOverlay)
-                    doc.body.classList.remove('slide-block--overflow')
-                }
-            }
+        if (settings.startMove) {
+            setTimeout(startMove, settings.delayStart)
         }
 
-        const startMove = function () {
-            if (settings.startMove) {
-                element.classList.add('slide-block--active')
-            }
-        }
-
-        element.classList.add(`slide-block--${settings.position}`)
-        setTimeout(startMove, settings.delayStart)
-
+        this.startMove = startMove
+        this.activateBlock = activateBlock
+        this.disableBlock = disableBlock
     }
 
     win.slideBlock = slideBlock

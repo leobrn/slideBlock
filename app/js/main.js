@@ -1,13 +1,11 @@
 
-const slideBlockUp = slideBlock({
-    position: 'up',
+const slideBlockUp = new slideBlock({
     elementID: 'slideBlockUp',
     startMove: true,
     elementsDisableID: ['notice']
 })
 
-const slideBlockLeft = slideBlock({
-    position: 'left',
+const slideBlockLeft = new slideBlock({
     elementID: 'slideBlockLeft',
     overlay: true,
     elementsActivateID: ['svgMenu']
