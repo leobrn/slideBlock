@@ -4,20 +4,46 @@
 
 .slide-block {
     position: fixed;
-    top: 0;
-    left: 0;
     z-index: 100;
     transition: all 0.5s ease;
 
     &--up {
+        top: 0;
+        left: 0;
         width: 100%;
         transform: translateY(-101%);
     }
 
+    &--down {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        transform: translateY(101%);
+    }
+
     &--left {
+        top: 0;
+        left: 0;
         width: 80%;
         height: 100vh;
         transform: translateX(-101%);
+
+        @media @tablet568 {
+            width: 50%;
+        }
+
+        @media @tablet1024 {
+            width: 40%;
+        }
+
+    }
+
+    &--right {
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 100vh;
+        transform: translateX(101%);
 
         @media @tablet568 {
             width: 50%;
