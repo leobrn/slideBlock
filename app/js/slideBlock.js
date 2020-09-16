@@ -8,64 +8,66 @@
             startMove: false,
             delayStart: 500,
             elementsActivateID: [],
-            elementsDisableID: []
+            elementsDisableID: [],
+            slideBlockOverlayHTML: `<div class="slide-block slide-block--overlay" id="slideBlockOverlay""></div>`
         },
-            slideBlockOverlayHTML = `<div class="slide-block slide-block--overlay" id="slideBlockOverlay""></div>`,
-            activateBlock = function () {
-                if (element) {
-                    element.classList.add('slide-block--active')
-                    if (settings.overlay) {
-                        element.insertAdjacentHTML("afterEnd", slideBlockOverlayHTML)
-                        doc.body.classList.add('slide-block--overflow')
-                        const slideBlockOverlay = document.getElementById('slideBlockOverlay')
-                        slideBlockOverlay.addEventListener('click', () => {
-                            disableBlock()
-                        })
-                    }
-                }
-            },
-            disableBlock = function () {
-                if (element) {
-                    element.classList.remove('slide-block--active')
-                    if (settings.overlay) {
-                        const slideBlockOverlay = document.getElementById('slideBlockOverlay')
-                        slideBlockOverlay.parentNode.removeChild(slideBlockOverlay)
-                        doc.body.classList.remove('slide-block--overflow')
-                    }
-                }
-            },
-            elementAddEventListener = function (array, disable = false) {
-                if (Array.isArray(array)) {
-                    array.forEach(item => {
+            listener = function (obj, arr, disable = false) {
+                if (Array.isArray(arr)) {
+                    arr.forEach(item => {
                         const elementEvent = document.getElementById(item)
                         if (elementEvent) {
                             elementEvent.addEventListener('click', () => {
                                 if (disable) {
-                                    disableBlock()
+                                    obj.disableBlock()
                                 } else {
-                                    activateBlock()
+                                    obj.activateBlock()
                                 }
                             })
                         }
                     })
                 }
-            },
-            startMove = function () {
-                element.classList.add('slide-block--active')
             }
 
         Object.assign(settings, options)
+        listener(this, settings.elementsActivateID)
+        listener(this, settings.elementsDisableID, true)
+
         const element = document.getElementById(settings.elementID)
+        this.element = element
+        this.settings = settings
 
-        elementAddEventListener(settings.elementsActivateID)
-        elementAddEventListener(settings.elementsDisableID, true)
         if (settings.startMove) {
-            setTimeout(startMove, settings.delayStart)
+            setTimeout(this.activateBlock(), settings.delayStart)
         }
+    }
 
-        this.startMove = startMove
-        this.activateBlock = activateBlock
-        this.disableBlock = disableBlock
+    slideBlock.prototype.activateBlock = function () {
+        const element = this.element
+        const settings = this.settings
+        if (element) {
+            element.classList.add('slide-block--active')
+            if (settings.overlay) {
+                element.insertAdjacentHTML("afterEnd", settings.slideBlockOverlayHTML)
+                doc.body.classList.add('slide-block--overflow')
+                const slideBlockOverlay = document.getElementById('slideBlockOverlay')
+                slideBlockOverlay.addEventListener('click', () => {
+                    this.disableBlock()
+                })
+            }
+        }
+    }
+
+    slideBlock.prototype.disableBlock = function () {
+        const element = this.element
+        const settings = this.settings
+        if (element) {
+            element.classList.remove('slide-block--active')
+            if (settings.overlay) {
+                const slideBlockOverlay = document.getElementById('slideBlockOverlay')
+                slideBlockOverlay.parentNode.removeChild(slideBlockOverlay)
+                doc.body.classList.remove('slide-block--overflow')
+            }
+        }
     }
 
     win.slideBlock = slideBlock
