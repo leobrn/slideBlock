@@ -1,0 +1,46 @@
+.slide-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: all 0.5s ease;
+}
+
+.slide-block--up {
+    width: 100%;
+    transform: translateY(-101%);
+}
+
+.slide-block--left {
+    width: 80%;
+    height: 100vh;
+    transform: translateX(-101%);
+}
+
+@media (min-width: 568px) {
+    .slide-block--left {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .slide-block--left {
+        width: 40%;
+    }
+}
+
+.slide-block--active {
+    transform: translate(0, 0);
+}
+
+.slide-block--overlay {
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100vh;
+    transition: all 0.5s ease;
+}
+
+.slide-block--overflow {
+    overflow: hidden;
+}

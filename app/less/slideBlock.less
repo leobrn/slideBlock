@@ -1,0 +1,48 @@
+@tablet568: ~"(min-width: 568px)";
+@tablet768: ~"(min-width: 768px)";
+@tablet1024: ~"(min-width: 1024px)";
+
+.slide-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: all 0.5s ease;
+
+    &--up {
+        width: 100%;
+        transform: translateY(-101%);
+    }
+
+    &--left {
+        width: 80%;
+        height: 100vh;
+        transform: translateX(-101%);
+
+        @media @tablet568 {
+            width: 50%;
+        }
+
+        @media @tablet1024 {
+            width: 40%;
+        }
+
+    }
+
+    &--active {
+        transform: translate(0, 0);
+    }
+
+    &--overlay {
+        z-index: 99;
+        background-color: rgb(#000000, 30%);
+        width: 100%;
+        height: 100vh;
+        transition: all 0.5s ease;
+    }
+
+    &--overflow {
+        overflow: hidden;
+    }
+
+}
