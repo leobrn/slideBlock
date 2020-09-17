@@ -13,17 +13,28 @@ A Library for creating slide blocks in Javascript
 
 ## Installation
 
-As standalone just include the file in a script tag:
+As standalone just include the file in a tags:
 
 ```html
+<link rel="stylesheet" href="slideBlock.css">
+
 <script src="slideBlock.js"></script>
 ```
 
 ## Usage
 
+```html
+<div class="slide-block slide-block--left" id="slideBlockLeft">
+ <div class="menu" id="leftMenu">
+
+  </div>
+ </div>
+```
 ```javascript
 const slideBlockLeft = new slideBlock({
-    elementID: 'slideBlockLeft'
+    elementID: 'slideBlockLeft',
+    overlay: true,
+    elementsActivateID: ['svgMenu']
 })
 ```
 
