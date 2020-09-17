@@ -38,25 +38,25 @@ settings = {
     slideBlockOverlayHTML: `<div class="slide-block slide-block--overlay" id="slideBlockOverlay""></div>`
 ```
 
-* `elementID`:
-* `overlay`: 
-* `startMove`: 
-* `delayStart`: 
-* `elementsActivateID`: 
-* `elementsDisableID`: 
-* `slideBlockOverlayHTML`: 
+* `elementID`: The element ID which the user will be sliding
+* `overlay`: If true, the body class will be added .slide-block--overflow and slideBlockOverlay will be created
+* `startMove`: Start driving after loading 
+* `delayStart`: Delay start of movement when startMove = true
+* `elementsActivateID`: An array of elements that open the block 
+* `elementsDisableID`: An array of elements that close the block
+* `slideBlockOverlayHTML`: Overlay block HTML
 
 ## Public Methods
 
-### `activateBlock`:
+### `activateBlock`: Opens block
 
 ```javascript
-slideBlockLeft.activateBlock();
+slideBlockLeft.activateBlock()
 
 ```
 
-### `disableBlock`:
+### `disableBlock`: Closes block
 
 ```javascript
-slideBlockLeft.disableBlock();
+slideBlockLeft.disableBlock()
 ```
