@@ -12,6 +12,9 @@ body {
     min-width: 320px;
     background-color: #F5F5F5;
     font-family: sans-serif;
+    color: #03A6FD;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .container {
@@ -22,6 +25,7 @@ body {
     height: 25px;
     width: 25px;
     fill: #03A6FD;
+    margin-right: 10px;
 }
 
 .svg:active,
