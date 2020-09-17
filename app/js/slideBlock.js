@@ -37,7 +37,7 @@
         this.settings = settings
 
         if (settings.startMove) {
-            setTimeout(this.activateBlock(), settings.delayStart)
+            setTimeout(() => { this.activateBlock() }, settings.delayStart)
         }
     }
 
