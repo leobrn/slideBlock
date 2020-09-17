@@ -1,7 +1,9 @@
 const gulp = require('gulp'),
     less = require('gulp-less'),
     browserSync = require('browser-sync').create(),
-    cssbeautify = require('gulp-cssbeautify')
+    cssbeautify = require('gulp-cssbeautify'),
+    ghPages = require('gh-pages'),
+    path = require('path')
 
 gulp.task('browser-sync', () => {
     browserSync.init({
@@ -22,7 +24,7 @@ gulp.task('js', () => {
 });
 
 gulp.task('less', () => {
-   return gulp.src(['app/less/**/*.less', '!app/less/**/_*.less'])
+    return gulp.src(['app/less/**/*.less', '!app/less/**/_*.less'])
         .pipe(less())
         .pipe(cssbeautify())
         .pipe(gulp.dest('app/css'))
@@ -35,4 +37,6 @@ gulp.task('watch', () => {
     gulp.watch('app/**/*.js', gulp.parallel('js'))
 })
 
-gulp.task('default', gulp.parallel('browser-sync', 'watch'))
+gulp.task('deploy', function(cb)  {
+    ghPages.publish(path.join(process.cwd(), '/app'), cb);
+})
