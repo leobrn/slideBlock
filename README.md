@@ -9,6 +9,7 @@ A Library for creating slide blocks in Javascript
 * [Usage](#usage)
 * [Settings &amp; Defaults](#settings-and-defaults)
 * [Public Methods](#public-methods)
+* [Compliments](#compliments)
 
 ## Installation
 
@@ -60,3 +61,10 @@ slideBlockLeft.activateBlock()
 ```javascript
 slideBlockLeft.disableBlock()
 ```
+## Compliments
+
+Subscribe to <a href="https://www.youtube.com/channel/UCkgcvGx_z49fiHJ_aiHAp3g?view_as=subscriber" target="_blank">Youtube</a> and <a href="https://t.me/ovmst" target="_blank">Telegram</a> channel
+
+<a href="https://www.youtube.com/channel/UCkgcvGx_z49fiHJ_aiHAp3g?view_as=subscriber" target="_blank"><img src="https://downloader.disk.yandex.ru/preview/712ec5d668df6ec8ef71082a1735847b66a932af4144dd8d4c5efb47f34394f7/5f632a2c/zQRr9JyOLVRHCgRUTO2yNC1o5LltJr0rM90xKVwOjfk7bW1QompEsqb7ue7XJiMrVpI1Pgf3lTI0fh96M1qg9w==?uid=0&filename=subscribe.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&tknv=v2&owner_uid=223483671&size=400x400"></a>
+
+
