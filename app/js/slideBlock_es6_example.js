@@ -1,6 +1,5 @@
-(function (win, doc) {
-    'use strict'
-    const SlideBlock = function (options) {
+class SlideBlock {
+    constructor(options) {
         const settings = {
             elementID: '',
             overlay: false,
@@ -18,7 +17,7 @@
         this.startMove()
     }
 
-    SlideBlock.prototype.disableBlock = function () {
+    disableBlock() {
         const element = this.element
         const settings = this.settings
         if (element) {
@@ -26,57 +25,61 @@
             if (settings.overlay) {
                 const slideBlockOverlay = document.getElementById('slideBlockOverlay')
                 slideBlockOverlay.parentNode.removeChild(slideBlockOverlay)
-                doc.body.classList.remove('slide-block--overflow')
+                document.body.classList.remove('slide-block--overflow')
             }
         }
     }
 
-    SlideBlock.prototype.activateBlock = function () {
+    activateBlock() {
         const element = this.element
         const settings = this.settings
         if (element) {
             element.classList.add('slide-block--active')
             if (settings.overlay) {
                 element.insertAdjacentHTML("afterEnd", settings.slideBlockOverlayHTML)
-                doc.body.classList.add('slide-block--overflow')
+                document.body.classList.add('slide-block--overflow')
                 const slideBlockOverlay = document.getElementById('slideBlockOverlay')
-                slideBlockOverlay.addEventListener('click', function () {
+                slideBlockOverlay.addEventListener('click', () => {
                     this.disableBlock()
-                }.bind(this))
+                })
             }
         }
     }
 
-    SlideBlock.prototype.elementListener = function () {
+    elementListener() {
         const settings = this.settings
         const listener = function (arr, disable = false) {
             if (Array.isArray(arr)) {
-                arr.forEach(function (item) {
+                arr.forEach(item => {
                     const elementEvent = document.getElementById(item)
                     if (elementEvent) {
-                        elementEvent.addEventListener('click', function () {
+                        elementEvent.addEventListener('click', () => {
                             if (disable) {
                                 this.disableBlock()
                             } else {
                                 this.activateBlock()
                             }
-                        }.bind(this))
+                        })
                     }
-                }.bind(this))
+                })
             }
         }.bind(this)
         listener(settings.elementsActivateID)
         listener(settings.elementsDisableID, true)
     }
 
-    SlideBlock.prototype.startMove = function () {
+    startMove() {
         const settings = this.settings
         if (settings.startMove) {
-            setTimeout(function () {
+            setTimeout(() => {
                 this.activateBlock()
-            }.bind(this), settings.delayStart)
+            }, settings.delayStart)
         }
     }
+}
 
-    win.SlideBlock = SlideBlock
-})(window, document)
+
+
+
+
+
