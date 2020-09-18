@@ -10,3 +10,10 @@ const slideBlockLeft = new SlideBlock({
     overlay: true,
     elementsActivateID: ['svgMenu']
 })
+
+const slideBlockModal = new SlideBlock({
+    elementID: 'slideBlockModal',
+    overlay: true,
+    elementsActivateID: ['button'],
+    elementsDisableID: ['buttonClose']
+})

@@ -41,6 +41,9 @@ body {
 .section {
     min-height: 300px;
     background-color: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .section--blue {
@@ -90,4 +93,35 @@ body {
 .menu {
     background-color: #fff;
     height: 100%;
+}
+
+.button {
+    width: 280px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #F52D99;
+    cursor: pointer;
+}
+
+.button__text {
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.button:active,
+.button:hover {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.modal {
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
