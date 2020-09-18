@@ -1,4 +1,4 @@
-# slideBlock.js
+# SlideBlock.js
 A Library for creating slide blocks in Javascript
 
 <a href="https://youtu.be/ZXxg2TFTx10" target="_blank">View Video Preview</a>
@@ -31,7 +31,7 @@ As standalone just include the file in a tags:
  </div>
 ```
 ```javascript
-const slideBlockLeft = new slideBlock({
+const slideBlockLeft = new SlideBlock({
     elementID: 'slideBlockLeft',
     overlay: true,
     elementsActivateID: ['svgMenu']
