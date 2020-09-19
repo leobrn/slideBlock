@@ -48,7 +48,7 @@ class SlideBlock {
 
     elementListener() {
         const settings = this.settings
-        const listener = function (arr, disable = false) {
+        const listener = (arr, disable = false) => {
             if (Array.isArray(arr)) {
                 arr.forEach(item => {
                     const elementEvent = document.getElementById(item)
@@ -63,7 +63,7 @@ class SlideBlock {
                     }
                 })
             }
-        }.bind(this)
+        }
         listener(settings.elementsActivateID)
         listener(settings.elementsDisableID, true)
     }
