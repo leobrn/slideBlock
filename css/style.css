@@ -8,6 +8,23 @@ html {
     box-sizing: inherit;
 }
 
+* {
+  /*! Запрет выделения текста start */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+  /*! Запрет выделения текста end */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+a {
+    text-decoration: none;
+    -webkit-touch-callout: none;
+}
+
 body {
     min-width: 320px;
     background-color: #F5F5F5;
@@ -124,4 +141,5 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
 }

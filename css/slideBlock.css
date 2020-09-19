@@ -4,14 +4,14 @@
     transition: all 0.5s ease;
 }
 
-.slide-block--up {
+.slide-block--top {
     top: 0;
     left: 0;
     width: 100%;
     transform: translateY(-101%);
 }
 
-.slide-block--down {
+.slide-block--bottom {
     bottom: 0;
     left: 0;
     width: 100%;
@@ -61,8 +61,7 @@
 .slide-block--center {
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
+    transform: translate(-50%, 100vh);
 }
 
 .slide-block--active {
@@ -70,7 +69,6 @@
 }
 
 .slide-block--center.slide-block--active {
-    display: block;
     transform: translate(-50%, -50%);
 }
 
