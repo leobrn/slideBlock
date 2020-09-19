@@ -3,7 +3,7 @@ A Library for creating slide blocks in Javascript
 
 <a href="https://youtu.be/ZXxg2TFTx10" target="_blank">View Video Preview</a>
 
-<a href="https://leobrn.github.io/slideBlock/" target="_blank">View Demos</a>
+<a href="https://leobrn.github.io/SlideBlock/" target="_blank">View Demos</a>
 
 * [Installation](#installation)
 * [Usage](#usage)
