@@ -8,7 +8,9 @@ A Library for creating slide blocks in Javascript
 * [Installation](#installation)
 * [Usage](#usage)
 * [Settings &amp; Defaults](#settings-and-defaults)
+* [Positions](#positions)
 * [Public Methods](#public-methods)
+* [FAQ's](#faq)
 * [Compliments](#compliments)
 
 ## Installation
@@ -39,6 +41,7 @@ const slideBlockLeft = new SlideBlock({
 ```
 
 ## Settings and Defaults
+
 ```javascript
 settings = {
     elementID: '',
@@ -58,20 +61,65 @@ settings = {
 * `elementsDisableID`: An array of elements that close the block
 * `slideBlockOverlayHTML`: Overlay block HTML
 
+## Positions
+
+The position of the blocks is set using css classes:
+
+* `.slide-block--top`: Block position on top
+* `.slide-block--right`: Block position to the right
+* `.slide-block--bottom`: Block bottom position 
+* `.slide-block--left`: Block position to the left
+* `.slide-block--center`: Сenter block position
+
 ## Public Methods
 
 ### `activateBlock`: Opens block
 
 ```javascript
 slideBlockLeft.activateBlock()
-
 ```
-
 ### `disableBlock`: Closes block
 
 ```javascript
 slideBlockLeft.disableBlock()
 ```
+### `elementListener`: Sets the click event for the passed elements ID in the elementsActivateID / elementsDisableID array 
+
+```javascript
+slideBlockLeft.elementListener()
+```
+
+### `startMove`: The start of block movement if the startMove = true setting is set. The delay is set by the delayStart setting
+
+```javascript
+slideBlockLeft.startMove()
+```
+## FAQ
+
+### - How can I make a modal window using slideBlock.js?
+
+```html
+<div class="slide-block slide-block--center" id="slideBlockModal">
+   <div class="modal" id="modal">
+      <div class="button" id="modalClose">
+       <span class="button__text">Modal close</span>
+     </div>
+   </div>
+</div>
+```
+
+```javascript
+const slideBlockModal = new SlideBlock({
+    elementID: 'slideBlockModal',
+    overlay: true,
+    elementsActivateID: ['modalOpen'],
+    elementsDisableID: ['modalClose']
+})
+```
+### - I have a functional proposal / I found a bug. Where can I write?
+
+Telegram chat <a href="https://t.me/ovmst_chat" target="_blank">@ovmst_chat</a>
+
 ## Compliments
 
 Subscribe to <a href="https://www.youtube.com/channel/UCkgcvGx_z49fiHJ_aiHAp3g?view_as=subscriber" target="_blank">Youtube</a> and <a href="https://t.me/ovmst" target="_blank">Telegram</a> channel
