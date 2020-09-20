@@ -4,6 +4,7 @@
         const settings = {
             elementID: '',
             overlay: false,
+            overlayDisables: true,
             startMove: false,
             delayStart: 500,
             elementsActivateID: [],
@@ -39,10 +40,12 @@
             if (settings.overlay) {
                 element.insertAdjacentHTML("afterEnd", settings.slideBlockOverlayHTML)
                 doc.body.classList.add('slide-block--overflow')
-                const slideBlockOverlay = document.getElementById('slideBlockOverlay')
-                slideBlockOverlay.addEventListener('click', function () {
-                    this.disableBlock()
-                }.bind(this))
+                if (settings.overlayDisables) {
+                    const slideBlockOverlay = document.getElementById('slideBlockOverlay')
+                    slideBlockOverlay.addEventListener('click', function () {
+                        this.disableBlock()
+                    }.bind(this))
+                }
             }
         }
     }
