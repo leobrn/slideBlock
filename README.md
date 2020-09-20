@@ -55,6 +55,7 @@ settings = {
 
 * `elementID`: The element ID which the user will be sliding
 * `overlay`: If true, the body class will be added .slide-block--overflow and slideBlockOverlay will be created
+* `overlayDisables`: If true, then when you click on overlay, the block will be closed
 * `startMove`: Start driving after loading 
 * `delayStart`: Delay start of movement when startMove = true
 * `elementsActivateID`: An array of elements that open the block 
