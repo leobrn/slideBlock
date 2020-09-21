@@ -19,8 +19,8 @@ class SlideBlock {
     }
 
     disableBlock() {
-        const element = this.element
-        const settings = this.settings
+        const settings = this.settings,
+            element = this.element
         if (element) {
             element.classList.remove('slide-block--active')
             if (settings.overlay) {
@@ -32,8 +32,8 @@ class SlideBlock {
     }
 
     activateBlock() {
-        const element = this.element
-        const settings = this.settings
+        const settings = this.settings,
+            element = this.element
         if (element) {
             element.classList.add('slide-block--active')
             if (settings.overlay) {
@@ -50,23 +50,23 @@ class SlideBlock {
     }
 
     elementListener() {
-        const settings = this.settings
-        const listener = (arr, disable = false) => {
-            if (Array.isArray(arr)) {
-                arr.forEach(item => {
-                    const elementEvent = document.getElementById(item)
-                    if (elementEvent) {
-                        elementEvent.addEventListener('click', () => {
-                            if (disable) {
-                                this.disableBlock()
-                            } else {
-                                this.activateBlock()
-                            }
-                        })
-                    }
-                })
+        const settings = this.settings,
+            listener = (arr, disable = false) => {
+                if (Array.isArray(arr)) {
+                    arr.forEach(item => {
+                        const elementEvent = document.getElementById(item)
+                        if (elementEvent) {
+                            elementEvent.addEventListener('click', () => {
+                                if (disable) {
+                                    this.disableBlock()
+                                } else {
+                                    this.activateBlock()
+                                }
+                            })
+                        }
+                    })
+                }
             }
-        }
         listener(settings.elementsActivateID)
         listener(settings.elementsDisableID, true)
     }
