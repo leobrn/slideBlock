@@ -48,10 +48,14 @@ const slideBlockLeft = new SlideBlock({
 settings = {
     elementID: '',
     overlay: false,
+    overlayDisables: true,
     startMove: false,
     delayStart: 500,
+    delayAll: 0,
+    destroy: false,
     elementsActivateID: [],
-    elementsDisableID: []
+    elementsDisableID: [],
+    execute: function () { return true }
 ```
 
 * `elementID`: The element ID which the user will be sliding
@@ -59,8 +63,11 @@ settings = {
 * `overlayDisables`: If true, then when you click on overlay, the block will be closed
 * `startMove`: Start driving after loading 
 * `delayStart`: Delay start of movement when startMove = true
+* `delayAll`: Delay for activateBlock and disableBlock methods. Use when creating / destroying a block via createBlock/destroy methods
+* `destroy`: If true, when the block is closed, the destroy method will be executed
 * `elementsActivateID`: An array of elements that open the block 
 * `elementsDisableID`: An array of elements that close the block
+* `execute`: The execute value will be checked before the activateBlock method is executed. You can pass to a function that returns true/false or immediately true/false. Use if block opening depends on condition  
 
 ## Positions
 
@@ -84,6 +91,17 @@ slideBlockLeft.activateBlock()
 ```javascript
 slideBlockLeft.disableBlock()
 ```
+### `createBlock`: Create block
+
+```javascript
+slideBlockLeft.createBlock('<div class="slide-block" id="slideBlockOverlay"><div class="slide-block slide-block--left" id="slideBlockLeft">...</div></div>', '.header')
+```
+### `destroy`: Destroy block
+
+```javascript
+slideBlockLeft.destroy()
+```
+
 ### `elementListener`: Sets the click event for the passed elements ID in the elementsActivateID / elementsDisableID array 
 
 ```javascript
