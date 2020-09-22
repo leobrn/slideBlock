@@ -62,6 +62,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 
     &--blue {
         background-color: #03A6FD;
@@ -91,6 +92,15 @@ body {
 
 /*! Header end */
 
+.title{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #FFF;
+    padding: 5px 20px;
+    text-align: center;
+}
+
 .notice {
     min-height: 120px;
     width: 100%;
@@ -117,12 +127,17 @@ body {
 }
 
 .button {
+    margin: 20px;
     width: 280px;
     padding: 15px;
     text-align: center;
     border-radius: 50px;
     background-color: #F52D99;
     cursor: pointer;
+
+    &--disable {
+        background-color: #DCDCDC;
+    }
 
     &__text {
         font-size: 20px;
@@ -131,8 +146,7 @@ body {
         text-transform: uppercase;
     }
 
-    &:active,
-    &:hover {
+    &:active {
         opacity: 0.8;
         transition: all 0.3s ease;
     }
@@ -146,4 +160,34 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+}
+
+.modal-examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 30px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-gap: 0px;
+    }
+
+    &__simple {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &__complex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
