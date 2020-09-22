@@ -26,11 +26,13 @@ As standalone just include the file in a tags:
 ## Usage
 
 ```html
-<div class="slide-block slide-block--left" id="slideBlockLeft">
- <div class="menu" id="leftMenu">
+<div class="slide-block" id="slideBlockOverlay">
+ <div class="slide-block slide-block--left" id="slideBlockLeft">
+  <div class="menu" id="leftMenu">
 
   </div>
  </div>
+</div>
 ```
 ```javascript
 const slideBlockLeft = new SlideBlock({
@@ -49,18 +51,16 @@ settings = {
     startMove: false,
     delayStart: 500,
     elementsActivateID: [],
-    elementsDisableID: [],
-    slideBlockOverlayHTML: `<div class="slide-block slide-block--overlay" id="slideBlockOverlay""></div>`
+    elementsDisableID: []
 ```
 
 * `elementID`: The element ID which the user will be sliding
-* `overlay`: If true, the body class will be added .slide-block--overflow and slideBlockOverlay will be created
+* `overlay`: If true, the body class will be added .slide-block--overflow and the block with the ID slideBlockOverlay will have a class .slide-block--overlay
 * `overlayDisables`: If true, then when you click on overlay, the block will be closed
 * `startMove`: Start driving after loading 
 * `delayStart`: Delay start of movement when startMove = true
 * `elementsActivateID`: An array of elements that open the block 
 * `elementsDisableID`: An array of elements that close the block
-* `slideBlockOverlayHTML`: Overlay block HTML
 
 ## Positions
 
@@ -100,12 +100,14 @@ slideBlockLeft.startMove()
 ### - How can I make a modal window using slideBlock.js?
 
 ```html
-<div class="slide-block slide-block--center" id="slideBlockModal">
+<div class="slide-block" id="slideBlockOverlay">
+ <div class="slide-block slide-block--center" id="slideBlockModal">
    <div class="modal" id="modal">
       <div class="button" id="modalClose">
        <span class="button__text">Modal close</span>
      </div>
    </div>
+ </div>
 </div>
 ```
 
