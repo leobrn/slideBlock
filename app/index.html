@@ -53,16 +53,35 @@
 
     <main class="main">
         <section class="section section--blue">
-            <div class="button" id="button">
-                <span class="button__text">CLICK ME</span>
+            <div class="container">
+                <div class="modal-examples">
+                    <div class="modal-examples__simple">
+                        <div class="title">Simple modal</div>
+                        <div class="button" id="button">
+                            <span class="button__text">CLICK ME</span>
+                        </div>
+                    </div>
+                    <div class="modal-examples__complex">
+                        <div class="title">Complex modal (create, destroy,
+                            fulfillment condition)</div>
+                        <div class="button button--disable" id="modalComplex_1" data-item="1" data-state="false"
+                            data-modalComplex="true">
+                            <span class="button__text">CLICK ME</span>
+                        </div>
+                        <div class="button" id="modalComplex_2" data-item="2" data-state="true"
+                            data-modalComplex="true">
+                            <span class="button__text">CLICK ME</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section section--grey"></section>
         <section class="section"></section>
     </main>
 
-    <script src="js/slideBlock_es6.js"></script>
-    <!-- <script src="js/slideBlock.js"></script> -->
+    <!-- <script src="js/slideBlock_es6.js"></script> -->
+    <script src="js/slideBlock.js"></script>
     <script src="js/main.js"></script>
 </body>
 
