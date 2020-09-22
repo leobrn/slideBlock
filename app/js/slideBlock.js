@@ -8,8 +8,7 @@
             startMove: false,
             delayStart: 500,
             elementsActivateID: [],
-            elementsDisableID: [],
-            slideBlockOverlayHTML: `<div class="slide-block slide-block--overlay" id="slideBlockOverlay""></div>`
+            elementsDisableID: []
         }
         Object.assign(settings, options)
         const element = doc.getElementById(settings.elementID)
@@ -26,8 +25,10 @@
             element.classList.remove('slide-block--active')
             if (settings.overlay) {
                 const slideBlockOverlay = doc.getElementById('slideBlockOverlay')
-                slideBlockOverlay.parentNode.removeChild(slideBlockOverlay)
                 doc.body.classList.remove('slide-block--overflow')
+                if (slideBlockOverlay) {
+                    slideBlockOverlay.classList.remove('slide-block--overlay')
+                }
             }
         }
     }
@@ -38,13 +39,15 @@
         if (element) {
             element.classList.add('slide-block--active')
             if (settings.overlay) {
-                element.insertAdjacentHTML("afterEnd", settings.slideBlockOverlayHTML)
-                doc.body.classList.add('slide-block--overflow')
-                if (settings.overlayDisables) {
-                    const slideBlockOverlay = doc.getElementById('slideBlockOverlay')
-                    slideBlockOverlay.addEventListener('click', function () {
-                        this.disableBlock()
-                    }.bind(this))
+                const slideBlockOverlay = doc.getElementById('slideBlockOverlay')
+                if (slideBlockOverlay) {
+                    slideBlockOverlay.classList.add('slide-block--overlay')
+                    doc.body.classList.add('slide-block--overflow')
+                    if (settings.overlayDisables) {
+                        slideBlockOverlay.addEventListener('click', function () {
+                            this.disableBlock()
+                        }.bind(this))
+                    }
                 }
             }
         }
