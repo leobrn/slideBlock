@@ -11,7 +11,7 @@
             destroy: false,
             elementsActivateID: [],
             elementsDisableID: [],
-            execute: function () { return true }
+            execute: true
         }
         Object.assign(settings, options)
         const element = doc.getElementById(settings.elementID)
