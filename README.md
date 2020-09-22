@@ -55,7 +55,7 @@ settings = {
     destroy: false,
     elementsActivateID: [],
     elementsDisableID: [],
-    execute: function () { return true }
+    execute: true
 ```
 
 * `elementID`: The element ID which the user will be sliding
