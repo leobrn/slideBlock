@@ -11,7 +11,8 @@
             destroy: false,
             elementsActivateID: [],
             elementsDisableID: [],
-            execute: true
+            execute: true,
+            slideBlockOverlayHTML: `<div class="slide-block slide-block--overlay" id="slideBlockOverlay""></div>`
         }
         Object.assign(settings, options)
         const element = doc.getElementById(settings.elementID)
@@ -57,6 +58,10 @@
                 doc.body.classList.remove('slide-block--overflow')
                 if (slideBlockOverlay) {
                     slideBlockOverlay.classList.remove('slide-block--overlay')
+                    if (slideBlockOverlay.children.length === 0) {
+                        slideBlockOverlay.innerHTML = ''
+                        slideBlockOverlay.remove()
+                    }
                 }
             }
             if (settings.destroy && !this._destroyed) {
@@ -78,7 +83,11 @@
             const addClasses = function () {
                 element.classList.add('slide-block--active')
                 if (settings.overlay) {
-                    const slideBlockOverlay = doc.getElementById('slideBlockOverlay')
+                    let slideBlockOverlay = doc.getElementById('slideBlockOverlay')
+                    if (!slideBlockOverlay) {
+                        element.insertAdjacentHTML("afterEnd", settings.slideBlockOverlayHTML)
+                        slideBlockOverlay = doc.getElementById('slideBlockOverlay')
+                    }
                     if (slideBlockOverlay) {
                         slideBlockOverlay.classList.add('slide-block--overlay')
                         doc.body.classList.add('slide-block--overflow')
